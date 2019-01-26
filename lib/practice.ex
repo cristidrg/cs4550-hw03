@@ -17,9 +17,21 @@ defmodule Practice do
   end
 
   def factor(x) do
-    # Maybe delegate this too.
-    [1,2,x]
+    calcFactors(x, 2, [])
   end
 
-  # TODO: Add a palindrome? function.
+  def calcFactors(x, iterator, acc) do
+    if x <= 1 do
+      acc
+    else if rem(x, iterator) === 0 do
+      calcFactors(div(x, iterator), iterator, acc ++ [iterator])
+    else
+      calcFactors(x, iterator + 1, acc)
+    end
+  end
+  end
+
+  def palindrome(x) do
+    String.downcase(String.reverse(x)) == String.downcase(x)
+  end
 end
